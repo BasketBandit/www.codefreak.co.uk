@@ -1,0 +1,4 @@
+<div id="head" class="container"><!----><div id="title"><a href="../../">CODEFREAK</a></div><!----></div>
+<?php if( isset($_SESSION['user']) ) { ?>
+<div id="logged"><a href="https://www.codefreak.co.uk/dashboard/"><img class="radius" src="<?php echo $grav_url_small ?>" alt=""></a> &nbsp; <a href="https://www.codefreak.co.uk/logout?logout"><div id="logout" class="btn danger">Logout</div></a></div>
+<?php } else { echo "<div id='logged'><a href='https://www.codefreak.co.uk'><div id='logout' class='btn success'>Login</div></a></div>"; }; ?>

@@ -1,0 +1,866 @@
+@charset "utf-8";
+
+/* ------- Index -------
+
+XXX - Default Settings
+1.0 - Text Formatting
+1.1 - Page Formatting
+1.2 - Index.php
+1.3 - Steam.php
+1.4 - Runescape.php
+1.5 - Defined Classes
+1.6 - 3rd Party
+1.7 - Login Page
+1.8 - Buttons
+1.9 - Important
+3.0 - Mobile/Tablet
+
+--------------------- */
+
+/*********************** *********************** *********************** *********************** 
+DEFAULT SETTINGS  																		  XXX **
+*********************** *********************** *********************** ***********************/
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size:100%;
+	overflow-x:hidden;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+a:link, a:hover, a:active, a:visited {
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+body {
+	background-color:#ffffff;
+	background-attachment:fixed;
+	cursor:default;
+}
+
+input {
+	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+hr {
+	width:95%;
+    border:0;
+    height:0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+	font-size:5em;
+	text-decoration:none;
+	font-weight:100;
+	color:#FFFFFF;
+}
+
+h2 {
+	font-size:2em;
+	text-decoration:none;
+	font-weight:100;
+	color:#FFFFFF;
+}
+
+h3 {
+	text-align:center;
+	font-weight:normal;
+}
+
+h5 {
+	font-size:1em;
+	color:#FFFFFF;
+}
+
+h6 {
+	font-weight:normal;
+}
+
+progress[value] {
+	width:100%;
+	height:50px;
+	appearance:none;
+	border:none;
+	background-color:#C00;
+	border-radius:10px;
+}
+
+table {
+    border-collapse: collapse;
+	table-layout:fixed;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+th {
+    background-color: #333333;
+    color: white;
+}
+
+/*********************** *********************** *********************** ***********************  
+TEXT FORMATTING  																		  1.0 **
+*********************** *********************** *********************** ***********************/
+
+.b {
+	font-weight:bolder;
+}
+
+.light {
+	color:#000000;
+}
+
+.dark {
+	color:#FFFFFF;
+}
+
+/*********************** *********************** *********************** ***********************  
+PAGE FORMATTING   																		  1.1 **
+*********************** *********************** *********************** ***********************/
+
+#head {
+	top:0;
+	width:100%;
+	height:50px;
+	overflow:hidden;
+	z-index:1000;
+	color:#FFFFFF;
+	background-color:#333333;
+}
+
+#title {
+	display:inline-block;
+	font-family: 'Oswald', sans-serif;
+	font-size:2em;
+	height:50px;
+	width:100%;
+	text-align:center;
+	line-height:50px;
+	vertical-align:central;
+	margin-bottom:3px;
+}
+
+/*********************** *********************** *********************** ***********************  
+DEFINED CLASSES  																		  1.5 **
+*********************** *********************** *********************** ***********************/
+
+.hidden {
+	display:none;
+}
+
+.relative {
+	position:relative;
+}
+
+.centered {
+	display: block;
+    margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	width:100%;
+}
+
+.center { /* Exact */
+   width:50px;
+   height:50px;
+   position:absolute;
+   left:50%;
+   top:50%; 
+   margin-left:-25px;
+   margin-top:-25px;
+}
+
+.shadowed {
+	background-color:rgba(0,0,0,0.5)
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.ten {
+	width:10%;
+}
+
+.twenty {
+	width:20%;
+}
+
+.thirty {
+	width:30%;
+}
+
+.fourty {
+	width:40%;
+}
+
+.fithty {
+	width:50%;
+}
+
+.sixty {
+	width:60%;
+}
+
+.seventy {
+	width:70%;
+}
+
+.eighty {
+	width:80%;
+}
+
+.ninty {
+	width:90%;
+}
+
+.onehundred {
+	width:100%;
+}
+
+/*********************** *********************** *********************** *********************** 
+3RD PARTY         																		  1.6 **
+*********************** *********************** *********************** ***********************/
+
+#google_translate_element {
+	position:absolute;
+	top:12.5px;
+	right:12.5px;
+	overflow:hidden;
+	z-index:1000;
+}
+
+.adsbygoogle {
+	overflow:hidden;
+}
+
+/*********************** *********************** *********************** *********************** 
+LOGIN PAGE       																		  1.7 **
+*********************** *********************** *********************** ***********************/
+
+#login-page {
+	background-image:url(../img/background.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+#login-box {
+	background-color:#FFF;
+	border:groove;
+	border-color:#666;
+}
+
+#login-image {
+	width:100%;
+	position:absolute;
+	bottom:242.5px;
+}
+
+#login-imageA {
+	display:block;
+	border-radius:50%;
+    border: 1px solid #ccc;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#login-button {
+	width:100%;
+	position:absolute;
+	bottom:60px;
+	left:50%;
+	margin-left:-25%;
+}
+
+#login-username {
+	width:100%;
+	position:absolute;
+	bottom:172.5px;
+	left:50%;
+	margin-left:-25%;
+}
+
+#login-password {
+	width:100%;
+	position:absolute;
+	bottom:122.5px;
+	left:50%;
+	margin-left:-25%;
+}
+
+#login-error {
+	position:absolute;
+	width:730px;
+	top:30%;
+	left:50%;
+	margin-left:-365px;
+	margin-top:230px;
+}
+
+#login-search {
+	background-color:#FFF;
+	border:groove;
+	border-color:#666;
+	position:absolute;
+	width:750px;
+	height:57px;
+	top:30%;
+	left:50%;
+	margin-left:-375px;
+	margin-top:285px;
+	padding:10px;
+}
+
+.center { /* Exact */
+   width:750px;
+   height:550px;
+   position:absolute;
+   top:30%;   
+   left:50%; 
+   margin-left:-375px;
+   margin-top:-275px;
+}
+
+#login-border1 {
+    border: 1px solid #ccc;
+}
+
+#login-border2 {
+    border: 1px solid #ccc;
+}
+
+/*********************** *********************** *********************** ***********************  
+DASHBOARD        																		  1.7 **
+*********************** *********************** *********************** ***********************/
+
+#logged {
+	position:absolute;
+	height:50px;
+	padding-left:10px;
+	padding-right:10px;
+	top:0;
+	right:0;
+	color:#ffffff;
+	line-height:50px;
+	vertical-align:central;
+	z-index:10001;
+}
+
+#profile {
+	position:relative;
+	height:200px;
+	font-size:2em;
+	padding:10px;	
+}
+
+#profile-image {
+	width:180px;
+	height:180px;
+}
+
+#profile-commands {
+	background-color:rgba(102,102,102,0.4);
+	padding:10px;
+	font-size:2em;
+}
+
+.title {
+	position:absolute;
+	font-family: 'Oswald', sans-serif;
+	font-size:2em;
+	height:180px;
+	width:100%;
+	text-align:center;
+	line-height:190px;
+	vertical-align:central;
+	margin-left:-10px;
+	overflow:hidden;
+}
+
+.text {
+	font-size:2em;
+}
+
+
+/* ========================== *//* ========================== *//* ========================== */
+
+#twitch {
+	background-color:rgba(102,102,102,0.4);
+	padding:10px;
+	font-size:2em;
+}
+
+#twitch-player {
+	width:100%;
+	background-color:#000;
+	height:646.875px;
+	margin-top:10px;
+	margin-bottom:-10px;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+#steam {
+	background-color:rgba(102,102,102,0.4);
+	padding:10px;
+	font-size:2em;
+	font-family: 'Oswald', sans-serif;
+}
+
+#steam-container {
+	text-align:center;
+}
+
+#steam-avatar {
+	display:inline-block;
+	width:184px;
+	height:184px;
+	margin-top:10px;
+	border-radius:10px;
+}
+
+#steam-bans {
+	width:100%;
+	text-align:center;
+	margin-top:10px;
+}
+
+.steam-group {
+	display:inline-block;
+	width:195px;
+	height:140px;
+	text-align:center;
+	font-size:0.8em;
+	overflow:hidden;
+}
+
+.steam-games {
+	display:inline-block;
+	background-color:#cccccc;
+	border-radius:3px;
+	box-sizing:border-box;
+	margin:5px;
+	width:185px;
+	height:70px;
+	background-repeat:no-repeat;
+	background-size:cover;
+	overflow:hidden;
+}
+
+.steam-hours {
+	margin-top:-5px;
+	width:185px;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.admin {
+	background-color:#C00;
+}
+
+.radius {
+	border-radius: 5px;
+}
+
+.container-title {
+	width:100%;
+	margin-bottom:10px;
+}
+
+/*********************** *********************** *********************** *********************** 
+PROFILE          																		  1.7 **
+*********************** *********************** *********************** ***********************/
+
+.profile {
+	position:relative;
+	height:200px;
+	background-color:#666;
+	border-radius:5px;
+	margin:10px;
+	overflow:hidden;
+	color:#ffffff;
+	border:solid;
+	border-width:thin;
+	border-color:#000;
+	line-height:200px;
+}
+
+.profile-title {
+	display:inline-block;
+	font-family: 'Oswald', sans-serif;
+	font-size:3em;
+	width:100%;
+	text-align:center;
+	vertical-align:center;
+}
+
+.profile-tables {
+	width:100%;
+}
+
+#profile-accounts input {
+	width:100%;
+ 	border: 1px solid #ccc;
+}
+
+#profile-settings input {
+	width:100%;
+ 	border: 1px solid #ccc;
+}
+
+/*********************** *********************** *********************** *********************** 
+GROUPS          																		  1.7 **
+*********************** *********************** *********************** ***********************/
+
+.group {
+	position:relative;
+	height:200px;
+	background-color:#666;
+	border-radius:5px;
+	margin:10px;
+	overflow:hidden;
+	color:#ffffff;
+	border:solid;
+	border-width:thin;
+	border-color:#000;
+}
+
+.group-title {
+	display:inline-block;
+	font-family: 'Oswald', sans-serif;
+	font-size:3em;
+	width:100%;
+	text-align:center;
+	padding:10px;
+}
+
+.group-description {
+	text-align:center;
+}
+
+.group-join {
+	position:absolute;
+	width:100px;
+	bottom:10px;
+	right:10px;
+}
+
+/*********************** *********************** *********************** *********************** 
+SEARCH          																		  1.7 **
+*********************** *********************** *********************** ***********************/
+
+#profile-search input {
+	 border: 1px solid #ccc;
+}
+
+/*********************** *********************** *********************** *********************** 
+BUTTONS           																		  1.8 **
+*********************** *********************** *********************** ***********************/
+
+.btn {
+    display:inline-block;
+    padding:6px 6px;
+    margin-bottom:0;
+    font-size:0.875em;
+    font-weight:400;
+    line-height:1.42857143;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    background-image:none;
+    border:1px solid transparent;
+    border-radius:4px;
+	box-sizing:border-box;
+	font-family: 'Oswald', sans-serif;
+}
+
+.btn-x {
+    display:inline-block;
+    padding:6px 6px;
+    margin-bottom:0;
+    font-size:0.875em;
+    font-weight:400;
+    line-height:1.42857143;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    background-image:none;
+    border-radius:4px;
+	box-sizing:border-box;
+	font-family: 'Oswald', sans-serif;
+}
+
+.btn-info {
+	display:block;
+    width:217px;
+	box-sizing:border-box;
+}
+
+.btn-block {
+    display:block;
+    width:100%;
+	box-sizing:border-box;
+}
+
+.btn-xblock {
+    width:100%;
+	text-align:left;
+	box-sizing:border-box;
+	margin-bottom:10px;
+}
+
+.btn-xxblock {
+    width:50px;
+	margin-left:1px;
+	margin-right:1px;
+	margin-bottom:5px;
+	text-align:center;
+}
+
+.btn-xxxblock {
+    width:33%;
+	margin-left:1px;
+	margin-right:1px;
+	margin-bottom:5px;
+	text-align:center;
+	box-sizing:border-box;
+}
+
+.btn-50block {
+    width:50%;
+	margin-left:1px;
+	margin-right:1px;
+	margin-bottom:5px;
+	text-align:center;
+}
+
+.broken {
+	cursor:not-allowed;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.default {
+	color:#333;
+    background-color:#fff;
+    border-color:#ccc;
+}
+
+.default:hover {
+	color:#333;
+    background-color:#e6e6e6;
+    border-color:#adadad;
+}
+
+.default:active {
+	color:#333;
+    background-color:#d4d4d4;
+    border-color:#8c8c8c;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.primary {
+	color:#fff;
+    background-color:#337ab7;
+    border-color:#2e6da4;
+}
+
+.primary:hover {
+	color:#fff;
+    background-color:#286090;
+    border-color:#204d74;
+}
+
+.primary:active {
+	color:#fff;
+    background-color:#204d74;
+    border-color:#122b40;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.info {
+	color:#fff;
+    background-color:#5bc0de;
+    border-color:#46b8da;
+}
+
+.info:hover {
+	color:#fff;
+    background-color:#31b0d5;
+    border-color:#269abc;
+}
+
+.info:active {
+	color:#fff;
+    background-color:#269abc;
+    border-color:#1b6d85;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.success {
+    color:#fff;
+    background-color:#5cb85c;
+    border-color:#4cae4c;
+}
+
+.success:hover {
+    color:#fff;
+    background-color:#449d44;
+    border-color:#398439;
+}
+
+.success:active {
+	color:#fff;
+    background-color:#398439;
+    border-color:#255625;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.warning {
+	color:#fff;
+    background-color:#f0ad4e;
+    border-color:#eea236;
+}
+
+.warning:hover {
+	color:#fff;
+    background-color:#ec971f;
+    border-color:#d58512;
+}
+
+.warning:active {
+	color:#fff;
+    background-color:#d58512;
+    border-color:#985f0d;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.danger {
+	color:#fff;
+    background-color:#d9534f;
+    border-color:#d43f3a;
+}
+
+.danger:hover {
+	color:#fff;
+    background-color:#c9302c;
+    border-color:#ac2925;
+}
+
+.danger:active {
+	color:#fff;
+    background-color:#ac2925;
+    border-color:#761c19;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.link {
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    font-size: 17px;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    transition: all .2s ease-in-out;
+    text-shadow: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    border: 1px solid #dde;
+	text-decoration:none;
+}
+
+.link:hover {
+	background-color: #fff;
+    color: #666;
+    border: 1px solid #666;
+	text-decoration:none;
+	border-radius: 5px;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.offline {
+	color:#fff;
+	background-color:#898989;
+	border-color:#666;
+}
+
+.offline:hover {
+	color:#fff;
+	background-color:#676767;
+	border-color:#565656;
+}
+
+.offline:active {
+	color:#fff;
+	background-color:#565656;
+	border-color:#454545;
+}
+
+/*********************** *********************** *********************** *********************** 
+IMPORTANT         																		  1.9 **
+*********************** *********************** *********************** ***********************/
+
+.nopush {
+	padding:0;
+	margin:0;
+}
+
+.nopush-top {
+	padding-top:0;
+	margin-top:0;
+}
+
+.nopush-left {
+	padding-left:0;
+	margin-left:0;
+}
+
+.nopush-right {
+	padding-right:0;
+	margin-right:0;
+}
+
+.nopush-bottom {
+	padding-bottom:0;
+	margin-bottom:0;
+}
+
+.nomargin {
+	margin:0;
+}
+
+.nomargin-top {
+	margin-top:0;
+}
+
+.nomargin-left {
+	margin-left:0;
+}
+
+.nomargin-right {
+	margin-right:0;
+}
+
+.nomargin-bottom {
+	margin-bottom:0;
+}

@@ -1,0 +1,29 @@
+<div id="foot-container">
+
+<!--<div id="foot1">
+<h3>SITEMAP</h3>
+<a href="https://www.codefreak.co.uk">Splash</a> <br>
+<a href="https://www.codefreak.co.uk/steam/search.php">Steam</a> <br>
+<a href="https://www.codefreak.co.uk/csgo/search.php">CS:GO</a> <br>
+<a href="https://www.codefreak.co.uk/about/">About</a>
+</div>
+
+<div id="foot2">
+<h3>LEGAL</h3>
+<a href="#">LINK</a> <br>
+<a href="#">LINK</a> <br>
+<a href="#">LINK</a> <br>
+<a href="#">LINK</a>
+</div>
+
+<div id="foot3">
+<h3>SOCIAL</h3>
+<a href="https://twitter.com/CODEFREAK_" target="_blank">Twitter</a> <br>
+<a href="http://steamcommunity.com/id/codefreak/" target="_blank">Steam</a> <br>
+<a href="https://www.twitch.tv/secretpandatv" target="_blank">Twitch</a> <br>
+<a href="https://uk.linkedin.com/in/joshuah97" target="_blank">LinkedIn</a>
+</div>-->
+
+<footer id="foot"> &copy; <?php echo date("Y") ?> codefreak </footer>
+
+</div>
