@@ -69,7 +69,7 @@
 </div>
 
 <div id="login-search" class="center">
-<a href="profile"><div class="btn btn-block success">Search</div></a>
+<a href="/profiles/"><div class="btn btn-block success">Search</div></a>
 </div>
 
 </body>
