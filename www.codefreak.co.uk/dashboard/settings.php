@@ -3,9 +3,6 @@
  require_once '/var/www/static.codefreak.co.uk/structure/session/db_connect.php';
  require_once '/var/www/static.codefreak.co.uk/structure/session/session_check.php'; 
  require_once '/var/www/static.codefreak.co.uk/structure/session/db_retrieve.php';
- 
- $grav_url_small = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 30;
- $grav_url_large = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 180;
 
 if(isset($_POST['save'])) { 
 	 	 
@@ -35,12 +32,12 @@ if(isset($_POST['save'])) {
   
   if ($res) {
    $errTyp = "success";
-   $errMSG = "Update successful!";
-   header("refresh:2;url=settings");
+   $errMSG = "Update successful! Refreshing in 2 seconds...";
+   header("refresh:2;");
   } else {
    $errTyp = "danger";
-   $errMSG = "Something went wrong, try again later...";
-   header("refresh:2;url=settings");
+   $errMSG = "Something went wrong, refreshing in 2 seconds...";
+   header("refresh:2;");
   } 
  
 }

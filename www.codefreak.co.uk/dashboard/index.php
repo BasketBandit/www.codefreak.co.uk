@@ -5,9 +5,6 @@
  require_once '/var/www/static.codefreak.co.uk/structure/session/db_retrieve.php';
  
  require_once '/var/www/static.codefreak.co.uk/structure/data/data_self.php';
- 
- $grav_url_small = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 30;
- $grav_url_large = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 180;
 ?>
 
 <!doctype html>
@@ -62,7 +59,7 @@ if (file_exists($file0)) {
 <!-- USER INFORMATION -->
 <div id="profile" class="<?php echo $userData['account_rank']; ?> container radius">
 <div id="profile-username" class="title <?php if ($userData['displayUsername'] == 0) { echo "hidden"; } ?>"><?php echo $userData['username']; ?></div>
-<div id="profile-image" class="<?php if ($userData['displayAvatar'] == 0) { echo "hidden"; } ?>"><img class="profile-image radius" src="<?php echo $grav_url_large ?>" alt=""></div>
+<div id="profile-image" class="<?php if ($userData['displayAvatar'] == 0) { echo "hidden"; } ?>"><img class="profile-image radius" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$userData['username']) ?>/<?php echo hash('sha256',$userData['username']) ?>_gravatarLarge.jpg" alt=""></div>
 </div>
 <!-- USER INFORMATION END -->
 

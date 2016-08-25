@@ -8,7 +8,7 @@
 <?php if($_GET['username'] != "") { ?><a href="steam://friends/add/<?php echo $steamData['steamid'] ?>"><div class="btn warning">Add Friend</div></a> <?php } ?>
 <br>
 
-<img id="steam-avatar" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$userData['username']) ?>/<?php echo hash('sha256',$userData['username']) ?>_steamAvatar.jpg" alt="">
+<img id="steam-avatar" src="https://static.codefreak.co.uk/userdata/<?php if(isset($_GET['username'])) { echo hash('sha256',$SearchData['username']); echo "/"; echo hash('sha256',$SearchData['username']); } else { echo hash('sha256',$userData['username']); echo "/"; echo hash('sha256',$userData['username']); }?>_steamAvatar.jpg" alt="">
 
 <div id="steam-bans">
 <div id="ban1" class="btn"><?php echo $steamBans['VACBanned'] ?></div>

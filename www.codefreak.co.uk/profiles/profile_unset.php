@@ -1,38 +1,8 @@
-<?php 
- $res = mysqli_query($db,"SELECT * FROM db_identification WHERE username='$usersearch'");
- $userData = mysqli_fetch_array($res);
- 
- if ($userSearch != "") {
- if ($userData) {
-   $errTyp = "success";
-   require_once 'data_user.php';
-  } else {
-   $errTyp = "danger";
-   $errMSG = "<br><div class='btn btn-block danger'>Username not recognised.</div>"; 
-  };
- }
- 
-?>
-
 <!doctype html>
 <html>
 
 <head>
 <?php include '/var/www/static.codefreak.co.uk/structure/includes/meta.ssi'; ?>
-
-<style>
-body {
-	background:url('<?php echo $userData['account_background'] ?>');
-	background-size:cover;
-}
-
-#profile {
-	background:url('<?php echo $userData['account_banner'] ?>');
-	background-size:cover;
-	background-color:rgba(102,102,102,0.2);
-}
-</style>
-
 </head>
 
 <body>
@@ -54,13 +24,12 @@ body {
 
 <br>
 
-<div class="container">
 <?php
 if ($errJoin != "") {
 	echo $errJoin;
 }
 
-$unres = mysqli_query($db,"SELECT username, account_banner FROM db_identification WHERE username!='root'");
+$unres = mysqli_query($db,"SELECT username, account_banner FROM db_identification WHERE username!='root' AND username!='testuser'");
 $n1=0; $n2=0;
 
 if (mysqli_num_rows($unres) > 0) {
@@ -69,7 +38,7 @@ if (mysqli_num_rows($unres) > 0) {
 		$IUN = $row['username'];
 		$UBN = $row['account_banner'];
 		echo "<a href='?username=".$row['username']."'>";
-		echo "<div class='profile' style='background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(".$row["account_banner"].");'>";
+		echo "<div class='profile container' style='background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(".$row["account_banner"].");'>";
         echo "<div class='profile-title'>".$row["username"]. "</div>"; 
 		echo "</div>";
 		echo "</a>";
@@ -80,9 +49,7 @@ if (mysqli_num_rows($unres) > 0) {
 ?>
 
 <br>
-<?php echo "<div>Total accounts: " .mysqli_num_rows($unres). "</div>" ?>
-
-</div>
+<?php echo "<div class='container'>Total accounts: " .mysqli_num_rows($unres). "</div>" ?>
 
 </body>
 </html>

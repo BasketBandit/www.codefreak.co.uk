@@ -9,9 +9,8 @@
  $usersearch = $_GET['username'];
  
  if(isset($_SESSION['user'])) {
- $res2 = mysqli_query($db,"SELECT account_rank, username, account_email FROM db_identification WHERE username='$loggeduser'");
- $SELFuserData = mysqli_fetch_array($res2); 
- $grav_url_small = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($SELFuserData['account_email']))) ."?d=mm&s=" . 30;
+ $res = mysqli_query($db,"SELECT account_rank, username, account_email FROM db_identification WHERE username='$loggeduser'");
+ $userData = mysqli_fetch_array($res); 
  }
  
  if(!isset($usersearch)) { 

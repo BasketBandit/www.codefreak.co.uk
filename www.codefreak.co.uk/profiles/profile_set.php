@@ -1,8 +1,9 @@
 <?php 
- $res = mysqli_query($db,"SELECT * FROM db_identification WHERE username='$usersearch'");
- $userData = mysqli_fetch_array($res);
+ $usersearch = $_GET['username'];
+ $resu = mysqli_query($db,"SELECT * FROM db_identification WHERE username='$usersearch'");
+ $SearchData = mysqli_fetch_array($resu);
  
- if ($userData) {
+ if ($SearchData) {
    $errTyp = "success";
    require_once '/var/www/static.codefreak.co.uk/structure/data/data_user.php';
   } else {
@@ -20,12 +21,12 @@
 
 <style>
 body {
-	background:url('<?php echo $userData['account_background'] ?>');
+	background:url('<?php echo $SearchData['account_background'] ?>');
 	background-size:cover;
 }
 
 #profile {
-	background:url('<?php echo $userData['account_banner'] ?>');
+	background:url('<?php echo $SearchData['account_banner'] ?>');
 	background-size:cover;
 	background-color:rgba(102,102,102,0.2);
 }
@@ -52,26 +53,21 @@ body {
 
 <br>
 
-<?php
- $grav_url_large_search = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 180;
-?>
-
 <!-- USER INFORMATION -->
-<div id="profile" class="<?php echo $userData['account_rank']; ?> container radius">
-<div id="profile-username" class="title <?php if ($userData['displayUsername'] == 0) { echo "hidden"; } ?>">&nbsp;<?php echo $userData['username']; ?></div>
-<div id="profile-image" class="<?php if ($userData['displayAvatar'] == 0) { echo "hidden"; } ?>"><img class="profile-image radius" src="<?php echo $grav_url_large_search ?>" alt=""></div>
-
+<div id="profile" class="<?php echo $SearchData['account_rank']; ?> container radius">
+<div id="profile-username" class="title <?php if ($SearchData['displayUsername'] == 0) { echo "hidden"; } ?>">&nbsp;<?php echo $SearchData['username']; ?></div>
+<div id="profile-image" class="<?php if ($SearchData['displayAvatar'] == 0) { echo "hidden"; } ?>"><img class="profile-image radius" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$SearchData['username']) ?>/<?php echo hash('sha256',$SearchData['username']) ?>_gravatarLarge.jpg" alt=""></div>
 </div>
 <!-- USER INFORMATION END -->
 
 <br>
 
 <!-- TWITCH INFORMATION -->
-<?php if ($userData['displayTwitch'] == 1) { include '/var/www/static.codefreak.co.uk/structure/modules/module_twitch.php'; }; ?>
+<?php if ($SearchData['displayTwitch'] == 1) { include '/var/www/static.codefreak.co.uk/structure/modules/module_twitch.php'; }; ?>
 <!-- TWITCH INFORMATION END -->
 
 <!-- STEAM INFORMATION -->
-<?php if ($userData['displaySteam'] == 1) { include '/var/www/static.codefreak.co.uk/structure/modules/module_steam.php'; }; ?>
+<?php if ($SearchData['displaySteam'] == 1) { include '/var/www/static.codefreak.co.uk/structure/modules/module_steam.php'; }; ?>
 <!-- STEAM INFORMATION END -->
 
 <script type="text/javascript" src="https://static.codefreak.co.uk/assets/js/scripts.js"></script>

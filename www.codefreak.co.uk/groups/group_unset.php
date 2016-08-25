@@ -35,32 +35,45 @@ if($_GET['action'] = "join") {
 <?php include '/var/www/static.codefreak.co.uk/structure/includes/navigation.ssi'; ?>
 <!-- DASHBOARD BUTTONS END -->
 
-<div class="container">
-
 <?php
 if ($errJoin != "") {
+	echo "<div class='container'>";
 	echo $errJoin;
+	echo "</div><br>";
 }
 
-$result = mysqli_query($db,"SELECT * FROM db_groups");
+$result = mysqli_query($db,"SELECT * FROM db_groups WHERE group_visibility = 0");
 $n1=0; $n2=0;
-$group = $row['group_name'];
 
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-		$GID = $row['GroupID'];
-		echo "<a href='https://www.codefreak.co.uk/groups/?group=".$row["group_name"]."'>";
-		echo "<div class='group' style='background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(".$row["group_banner"].");'>";
+		$Group = $row['GroupID'];
+		$resrank =  mysqli_fetch_array(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $Group AND UserID = $userID"));
+		echo "<a href='https://www.codefreak.co.uk/groups/?id=".$row["GroupID"]."'>";
+		echo "<div class='group container' style='background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(".$row["group_banner"].");'>\n";
         echo "<div class='group-title'>".$row["group_name"]. "</div> <br> <div class='group-description'>" .$row["group_description"] ."</div>";
-		echo "<div class='group-join'><form method='get'><input type='hidden' name='user' value=".$userID."><button type='submit' class='btn btn-block success' name='groupID' value=".$GID.">Join Group</button><input type='hidden' name='action' value='join'></form></div>";
-		echo "</div></a>";
+		
+		if($row['group_privacy'] == 0) { 
+			if(mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $Group AND UserID = $userID")) == 1) { 
+			echo "<div class='group-rank " .$resrank['group_rank']."'>".$resrank['group_rank']."</div>"; 
+			} else {
+			echo "<div class='group-join'><form method='get'><input type='hidden' name='user' value=".$userID."><button type='submit' class='btn btn-block success' name='groupID' value=".$Group.">Join Group</button><input type='hidden' name='action' value='join'></form></div>"; 
+			};
+		} else { 
+			if(mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $Group AND UserID = $userID")) == 1) { echo "<div class='group-rank " .$resrank['group_rank']."'>".$resrank['group_rank']."</div>"; 
+			} else { 
+			echo "<div class='group-private'>Private Group</div>"; 
+			};
+		};
+		// The idea of this mess is; If the group is public, either show join button or show rank if already a member OR if the group is private, display as such unless a member and then display the rank instead.
+		
+		echo "</div></a>\n";
     }
 } else {
-    echo "No groups! :(";
+    echo "<div class='container'>No groups! :(</div>";
 }
 ?>
-</div>
-</body>
 
+</body>
 </html>

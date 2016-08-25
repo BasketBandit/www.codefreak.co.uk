@@ -1,6 +1,7 @@
 <?php
-$searchUser = $userData['username'];
+$searchUser = $SearchData['username'];
 $searchUser = hash('sha256',$searchUser);
+
 	if (!is_dir($searchUser)) {
 		mkdir("/var/www/static.codefreak.co.uk/userdata/" .$searchUser);
 	}
@@ -36,7 +37,7 @@ if ($size <= 0) {
 	
 	// STEAM ID CONVERSION
 	
-	$api = "https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=3FEF28E142BAC5A33F6B221FF3EB1CE3&vanityurl=" .$userData['account_steam'];
+	$api = "https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=3FEF28E142BAC5A33F6B221FF3EB1CE3&vanityurl=" .$SearchData['account_steam'];
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $api);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -45,7 +46,7 @@ if ($size <= 0) {
 	
 	if ($decoded['response']['success'] == 1) {
 	$steamID = $decoded['response']['steamid'];
-	} else { $steamID = $userData['account_steam']; }
+	} else { $steamID = $SearchData['account_steam']; }
 	
 	// API LINKS
 		
@@ -54,7 +55,7 @@ if ($size <= 0) {
 	$api2 = "https://api.steampowered.com/ISteamUser/GetPlayerBans/v1/?key=3FEF28E142BAC5A33F6B221FF3EB1CE3&steamids=" .$steamID ."&format=json";
 	$api3 = "https://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=3FEF28E142BAC5A33F6B221FF3EB1CE3&steamid=" .$steamID ."&include_appinfo=1&format=json";
 	
-	$api4 = "https://api.twitch.tv/kraken/channels/" .$userData['account_twitch'];
+	$api4 = "https://api.twitch.tv/kraken/channels/" .$SearchData['account_twitch'];
 	
 	// DATA COLLECTION
 	
@@ -106,9 +107,24 @@ if ($size <= 0) {
 	$avatar = $steamData['avatarfull'];
 	$image = file_get_contents($avatar);
 	file_put_contents("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamAvatar.jpg", $image);
-	
 	$steamImage = "/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamAvatar.jpg";
 	chmod($steamImage, 0775);
+	
+	// SAVE GRAVATAR ICON
+	$grav_url_small = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($SearchData['account_email']))) ."?d=mm&s=" . 30;
+    $grav_url_large = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($SearchData['account_email']))) ."?d=mm&s=" . 180;
+	
+	$gravatarSmall = $grav_url_small;
+	$imageGS = file_get_contents($gravatarSmall);
+	file_put_contents("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_gravatarSmall.jpg", $imageGS);
+	$gravatarSmall = "/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_gravatarSmall.jpg";
+	chmod($gravatarSmall, 0775);
+	
+	$gravatarLarge = $grav_url_large;
+	$imageGL = file_get_contents($gravatarLarge);
+	file_put_contents("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_gravatarLarge.jpg", $imageGL);
+	$gravatarLarge = "/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_gravatarLarge.jpg";
+	chmod($gravatarLarge, 0775);
 	
 	//
 	
