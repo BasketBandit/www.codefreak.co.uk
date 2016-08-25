@@ -54,3 +54,5 @@ www.codefreak.co.uk/googlea118cff6069de944.html
 static.codefreak.co.uk/userdata/
 static.codefreka.co.uk/security/
 static.codefreak.co.uk/structure/session/db_credentials.php
+*.crt
+*.key
