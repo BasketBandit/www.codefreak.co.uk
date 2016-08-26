@@ -35,5 +35,21 @@
    $errMSG = "Something went wrong, try again later..."; 
   } 
  }
+ 
+ if(isset($_POST['comment-contents'])) {
+	 $originalcomment = $_POST['comment-contents'];
+	 $editedcomment = trim($originalcomment);
+	 $editedcomment = htmlspecialchars($editedcomment);
+	 $submitcomment = mysqli_query($db,"INSERT INTO db_groups_posts_comments (PostID, UserID, comment_contents) VALUES('$_POST[PostID]', '$userID', '".addslashes($editedcomment)."');");
+	 
+  if ($submitcomment) {
+   $errTyp = "success";
+   $errMSG = "Post successful!";
+   header("refresh:0.5;");
+  } else {
+   $errTyp = "danger";
+   $errMSG = "Something went wrong, try again later..."; 
+  } 
+ }
 	 
 ?>

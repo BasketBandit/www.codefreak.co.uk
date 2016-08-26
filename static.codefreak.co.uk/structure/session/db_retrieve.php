@@ -6,6 +6,6 @@
  $userData = mysqli_fetch_array($res);
  
  if($ip != $userData['ipv4_loginlast']) {
-	 header("Location: logout?logout");
+	 header("Location: logout.php?logout");
  }
 ?>

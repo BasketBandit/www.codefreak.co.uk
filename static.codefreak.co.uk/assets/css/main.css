@@ -39,7 +39,7 @@ a:link, a:hover, a:active, a:visited {
 }
 
 body {
-	background-color:#ffffff;
+	background-color:rgba(230,230,230,1);
 	background-attachment:fixed;
 	cursor:default;
 }
@@ -691,15 +691,19 @@ POSTS/COMMENTS          																  1.7 **
 
 #post-create {
 	padding:10px;
-	background-color:rgba(51,51,51,0.1);
+	background-color:#e0e0e0;
+	border:1px solid #d0d0d0;
 }
 
 #post-input {
 	width:100%;
-	height:200px;
+	height:150px;
 	text-align:left;
 	margin-bottom:10px;
 	resize: vertical;
+	padding:10px;
+	border-radius:5px;
+	border:1px solid #d0d0d0;
 }
 
 .post-date {
@@ -708,18 +712,21 @@ POSTS/COMMENTS          																  1.7 **
 	right:20px;
 }
 
+.post-permalink {
+	position:absolute;
+	top:60px;
+	left:85px;
+}
+
 .post {
 	position:relative;
-	background-color:rgba(51,51,51,0.1);
-	margin-bottom:10px;
+	background-color:rgba(255,255,255,1);
 	padding:20px;
+	border:1px solid #d0d0d0;
 }
 
 .post-author {
-	display:inline;
-}
-
-.post-author-avatar {
+	font-size:2em;
 	display:inline;
 }
 
@@ -735,8 +742,7 @@ POSTS/COMMENTS          																  1.7 **
 }
 
 .post a {
-	color:#F00;
-	text-decoration:underline;
+	color:#000;
 }
 
 .post p {
@@ -745,6 +751,49 @@ POSTS/COMMENTS          																  1.7 **
 
 .post iframe {
 	margin-top:20px;
+}
+
+/* ========================== *//* ========================== *//* ========================== */
+
+.post-comment {
+	position:relative;
+	width:100%;
+	padding:10px;
+	background-color:#e6e6e6;
+	border:1px solid #d0d0d0;
+	min-height:65px;
+}
+
+.post-comment a {
+	color:#000000;
+}
+
+.post-comments {
+	width:100%;
+	padding:10px;
+	background-color:#e6e6e6;
+	margin-bottom:20px;
+	border:1px solid #d0d0d0;
+}
+
+.comment-input {
+	width:100%;
+	padding:10px;
+	border-radius:5px;
+    border:1px solid #d0d0d0;
+}
+
+.comment-contents {
+	margin-left:55px;
+}
+
+.user-comment-avatar {
+	position:absolute;
+	margin-right:10px;
+}
+
+.comment-time {
+	color:#AAA;
 }
 
 /*********************** *********************** *********************** *********************** 

@@ -56,3 +56,5 @@ static.codefreka.co.uk/security/
 static.codefreak.co.uk/structure/session/db_credentials.php
 *.crt
 *.key
+static.codefreak.co.uk/security/www.codefreak.co.uk.crt
+static.codefreak.co.uk/security/www.codefreak.co.uk.key

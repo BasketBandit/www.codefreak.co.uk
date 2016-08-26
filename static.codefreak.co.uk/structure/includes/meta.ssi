@@ -6,6 +6,7 @@
   
   <title>www.codefreak.co.uk</title> 
   
+  <link rel="icon" type="image/png" href="https://static.codefreak.co.uk/assets/img/favicon.png" />
   <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
   
   <link rel="stylesheet" href="https://static.codefreak.co.uk/assets/css/bootstrap.min.css">

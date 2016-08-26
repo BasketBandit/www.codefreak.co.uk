@@ -44,20 +44,46 @@ echo "</div>";
 
 <div class="container">
 <?php
-$result = mysqli_query($db,"SELECT * FROM db_groups_posts WHERE GroupID = $GroupID");
-$n1=0; $n2=0;
-$group = $row['group_name'];
+$result = mysqli_query($db,"SELECT * FROM db_groups_posts WHERE GroupID = $GroupID ORDER BY `post_created` DESC");
 
+$n1=0; $n2=0;
+
+// If there are any posts, recursively load them.
 if (mysqli_num_rows($result) > 0) {
-    // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
+		
 		$post = mysqli_query($db,"SELECT username FROM db_identification WHERE UserID = $row[UserID]");
 		$post = mysqli_fetch_array($post);
 		$posthash = hash("sha256",$post["username"]);
-		echo "<div class='post'>";
-        echo "<div class'post-autor-avatar'><img src='https://static.codefreak.co.uk/userdata/".$posthash."/".$posthash."_gravatarSmall.jpg' alt''/></div> <div class='post-author'>".$post["username"]."</div> <div class='post-date'>".$row['post_created']."</div> <hr> ";
+		
+		$comments = mysqli_query($db,"SELECT * FROM db_groups_posts_comments WHERE PostID = $row[PostID]");
+		
+		echo "<div class='post'>\n";
+        echo "<div class'post-author'><a href='https://www.codefreak.co.uk/profiles/?username=".$post["username"]."'><img style='width:55px;height:55px;' src='https://static.codefreak.co.uk/userdata/".$posthash."/".$posthash."_gravatarLarge.jpg' alt''/></a>\n
+		<a href='https://www.codefreak.co.uk/profiles/?username=".$post["username"]."'><div class='post-author'>&nbsp;".$post["username"]."</div></a></div> <div class='post-date'>".$row['post_created']."</div>\n 
+		<a href='https://www.codefreak.co.uk/groups/?post=".$row['PostID'] ."'><div class='post-permalink'>Permalink</div></a>\n <hr> \n";
 		echo "<div class='post-contents'>" .$parsedown->text(preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"1100\" height=\"619\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",$row["post_contents"])) ."</div>";
 		echo "</div>\n";
+		
+		// If there are any comments, recursively load them.
+		if (mysqli_num_rows($comments) > 0) {	
+			while($comment = mysqli_fetch_assoc($comments)) {
+				
+				$contribute = mysqli_query($db,"SELECT username FROM db_identification WHERE UserID = $comment[UserID]");
+				$contribute = mysqli_fetch_array($contribute);
+				$contributehash = hash("sha256",$contribute["username"]);
+						
+		echo "<div class='post-comment'>
+		<a href='https://www.codefreak.co.uk/profiles/?username=".$contribute["username"]."'><img class='user-comment-avatar' style='width:45px;height:45px;' src='https://static.codefreak.co.uk/userdata/".$contributehash."/".$contributehash."_gravatarLarge.jpg' alt''/></a> 
+		<div class='comment-contents'><a href='https://www.codefreak.co.uk/profiles/?username=".$contribute["username"]."'><b>".$contribute["username"]."</b></a> ".$comment['comment_contents']."<br> <span class='comment-time'>" .$comment['comment_created']."</span></div></div>";
+		}};
+		
+		echo "<div class='post-comments'>\n
+		<form method='post'>\n
+		<input type='hidden' name='PostID' value='".$row['PostID']."'/>\n
+		<input class='comment-input' type='text' name='comment-contents' placeholder='Leave a comment...' autocomplete='off'/>\n
+		</form>\n
+		</div>\n";
     }
 } else {
     echo "<div class='container'> No posts! :( </div>";
@@ -74,7 +100,7 @@ if($ismem == 1) { ?>
 
 <div id="post-create" class="container">
 <form method="post">
-<textarea id="post-input" type="text" name="post-contents"></textarea>
+<textarea id="post-input" type="text" name="post-contents" placeholder="Write something..."></textarea>
 <button type="submit" class="btn btn-xxblock success" name="post-submit">Post</button>
 </form>
 </div>
