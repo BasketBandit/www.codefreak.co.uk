@@ -113,7 +113,7 @@ if ($size <= 0) {
 	// SAVE GRAVATAR ICON
 	
 	$grav_url_small = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 30;
-    $grav_url_large = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 180;
+    $grav_url_large = "https://www.gravatar.com/avatar/" .md5(strtolower(trim($userData['account_email']))) ."?d=mm&s=" . 130;
 	
 	$gravatarSmall = $grav_url_small;
 	$imageGS = file_get_contents($gravatarSmall);

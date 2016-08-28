@@ -28,8 +28,8 @@
 if ($errJoin != "") {
 	echo $errJoin;
 }
-
-$unres = mysqli_query($db,"SELECT username, account_banner FROM db_identification WHERE username!='root' AND username!='testuser'");
+// Select 5 random profiles and display them.
+$unres = mysqli_query($db,"SELECT username, account_banner FROM db_identification WHERE username!='root' AND username!='testuser' ORDER BY rand() LIMIT 5");
 $n1=0; $n2=0;
 
 if (mysqli_num_rows($unres) > 0) {

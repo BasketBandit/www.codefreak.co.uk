@@ -66,7 +66,7 @@ h1 {
 }
 
 h2 {
-	font-size:2em;
+	font-size:1.5em;
 	text-decoration:none;
 	font-weight:100;
 	color:#FFFFFF;
@@ -113,6 +113,10 @@ tr:nth-child(even) {
 th {
     background-color: #333333;
     color: white;
+}
+
+.container {
+	width:800px;
 }
 
 /*********************** *********************** *********************** ***********************  
@@ -363,37 +367,38 @@ DASHBOARD        																		  1.7 **
 
 #profile {
 	position:relative;
-	height:200px;
+	height:150px;
 	font-size:2em;
 	padding:10px;	
 }
 
 #profile-image {
-	width:180px;
-	height:180px;
+	width:130px;
+	height:130px;
+	overflow:hidden;
 }
 
 #profile-commands {
 	background-color:rgba(102,102,102,0.4);
 	padding:10px;
-	font-size:2em;
+	font-size:1.5em;
 }
 
 .title {
 	position:absolute;
 	font-family: 'Oswald', sans-serif;
-	font-size:2em;
-	height:180px;
+	font-size:1.5em;
+	height:140px;
 	width:100%;
 	text-align:center;
-	line-height:190px;
+	line-height:140px;
 	vertical-align:central;
 	margin-left:-10px;
 	overflow:hidden;
 }
 
 .text {
-	font-size:2em;
+	font-size:1.5em;
 }
 
 
@@ -402,13 +407,13 @@ DASHBOARD        																		  1.7 **
 #twitch {
 	background-color:rgba(102,102,102,0.4);
 	padding:10px;
-	font-size:2em;
+	font-size:1.5em;
 }
 
 #twitch-player {
 	width:100%;
 	background-color:#000;
-	height:646.875px;
+	height:439px;
 	margin-top:10px;
 	margin-bottom:-10px;
 }
@@ -418,7 +423,7 @@ DASHBOARD        																		  1.7 **
 #steam {
 	background-color:rgba(102,102,102,0.4);
 	padding:10px;
-	font-size:2em;
+	font-size:1.5em;
 	font-family: 'Oswald', sans-serif;
 }
 
@@ -484,7 +489,7 @@ PROFILE          																		  1.7 **
 
 .profile {
 	position:relative;
-	height:200px;
+	height:150px;
 	background-color:#666;
 	border-radius:5px;
 	margin-bottom:10px;
@@ -493,7 +498,7 @@ PROFILE          																		  1.7 **
 	border:solid;
 	border-width:thin;
 	border-color:#000;
-	line-height:200px;
+	line-height:150px;
 }
 
 .profile-title {
@@ -525,7 +530,7 @@ GROUPS          																		  1.7 **
 
 .group {
 	position:relative;
-	height:200px;
+	height:150px;
 	background-color:#666;
 	border-radius:5px;
 	margin-bottom:10px;
@@ -539,7 +544,7 @@ GROUPS          																		  1.7 **
 .group-title {
 	display:inline-block;
 	font-family: 'Oswald', sans-serif;
-	font-size:3em;
+	font-size:2.5em;
 	width:100%;
 	text-align:center;
 	padding:10px;
@@ -548,11 +553,11 @@ GROUPS          																		  1.7 **
 .group-name {
 	position:absolute;
 	font-family: 'Oswald', sans-serif;
-	font-size:2em;
-	height:180px;
+	font-size:1.5em;
+	height:140px;
 	width:100%;
 	text-align:center;
-	line-height:190px;
+	line-height:140px;
 	vertical-align:central;
 	margin-left:-10px;
 	overflow:hidden;
@@ -605,8 +610,8 @@ GROUPS          																		  1.7 **
 
 #group-banner {
 	position:relative;
-	height:200px;
-	font-size:2em;
+	height:150px;
+	font-size:1.5em;
 	padding:10px;
 }
 
@@ -708,8 +713,8 @@ POSTS/COMMENTS          																  1.7 **
 
 .post-date {
 	position:absolute;
-	top:20px;
-	right:20px;
+	top:10px;
+	right:10px;
 }
 
 .post-permalink {
@@ -721,12 +726,13 @@ POSTS/COMMENTS          																  1.7 **
 .post {
 	position:relative;
 	background-color:rgba(255,255,255,1);
+	margin-top:10px;
 	padding:20px;
 	border:1px solid #d0d0d0;
 }
 
 .post-author {
-	font-size:2em;
+	font-size:1.5em;
 	display:inline;
 }
 
@@ -738,7 +744,7 @@ POSTS/COMMENTS          																  1.7 **
 }
 
 .post h1 {
-	font-size:2.5em;
+	font-size:2em;
 }
 
 .post a {
@@ -759,7 +765,7 @@ POSTS/COMMENTS          																  1.7 **
 	position:relative;
 	width:100%;
 	padding:10px;
-	background-color:#e6e6e6;
+	background-color:#F5F5F5;
 	border:1px solid #d0d0d0;
 	min-height:65px;
 }
@@ -771,7 +777,7 @@ POSTS/COMMENTS          																  1.7 **
 .post-comments {
 	width:100%;
 	padding:10px;
-	background-color:#e6e6e6;
+	background-color:#F5F5F5;
 	margin-bottom:20px;
 	border:1px solid #d0d0d0;
 }
@@ -785,6 +791,7 @@ POSTS/COMMENTS          																  1.7 **
 
 .comment-contents {
 	margin-left:55px;
+	margin-right:20px;
 }
 
 .user-comment-avatar {

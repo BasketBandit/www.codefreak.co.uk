@@ -91,7 +91,7 @@ if(isset($_POST['save'])) {
 <table id="profile-settings" class="profile-tables">
 <th>Setting</th><th>Current</th><th>New</th>
 <tr>
-<td>Banner (URL) (117:20)</td> <td><?php echo $userData['account_banner'] ?></td> <td><input type="text" name="account_banner" class="btn" value="<?php echo $userData['account_banner'] ?>" /></td>
+<td>Banner (URL) (4:1 | 800x200)</td> <td><?php echo $userData['account_banner'] ?></td> <td><input type="text" name="account_banner" class="btn" value="<?php echo $userData['account_banner'] ?>" /></td>
 </tr>
 <tr>
 <td>Background Image (URL)</td> <td><?php echo $userData['account_background'] ?></td> <td><input type="text" name="account_background" class="btn" value="<?php echo $userData['account_background'] ?>" /></td>

@@ -53,7 +53,7 @@ $GroupData = mysqli_fetch_array($GroupData);
 <td>Group Description</td> <td><?php echo $GroupData['group_description'] ?></td> <td><input type="text" name="group_description" class="btn" value="<?php echo $GroupData['group_description'] ?>" /></td>
 </tr>
 <tr>
-<td>Group Banner</td> <td><?php echo $GroupData['group_banner'] ?></td> <td><input type="text" name="group_banner" class="btn" value="<?php echo $GroupData['group_banner'] ?>" /></td>
+<td>Group Banner (4:1 | 800x200)</td> <td><?php echo $GroupData['group_banner'] ?></td> <td><input type="text" name="group_banner" class="btn" value="<?php echo $GroupData['group_banner'] ?>" /></td>
 </tr>
 </table>
 

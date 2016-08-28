@@ -33,6 +33,7 @@ if($isadmin == 1) {
  ?>
 
 <?php
+$ismem = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID"));
 $GroupData = mysqli_query($db,"SELECT * FROM db_groups WHERE GroupID = $GroupID");
 $GroupData = mysqli_fetch_array($GroupData);
 echo "<div id='group-banner' class='container radius'>";
@@ -60,30 +61,48 @@ if (mysqli_num_rows($result) > 0) {
 		
 		echo "<div class='post'>\n";
         echo "<div class'post-author'><a href='https://www.codefreak.co.uk/profiles/?username=".$post["username"]."'><img style='width:55px;height:55px;' src='https://static.codefreak.co.uk/userdata/".$posthash."/".$posthash."_gravatarLarge.jpg' alt''/></a>\n
-		<a href='https://www.codefreak.co.uk/profiles/?username=".$post["username"]."'><div class='post-author'>&nbsp;".$post["username"]."</div></a></div> <div class='post-date'>".$row['post_created']."</div>\n 
+		<a href='https://www.codefreak.co.uk/profiles/?username=".$post["username"]."'><div class='post-author'>&nbsp;<b>".$post["username"]."</b></div></a></div> <div class='post-date'>".$row['post_created']."</div>\n 
 		<a href='https://www.codefreak.co.uk/groups/?post=".$row['PostID'] ."'><div class='post-permalink'>Permalink</div></a>\n <hr> \n";
-		echo "<div class='post-contents'>" .$parsedown->text(preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"1100\" height=\"619\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",$row["post_contents"])) ."</div>";
+		echo "<div class='post-contents'>" .$parsedown->text(preg_replace("/\s*[a-zA-Z\/\/:\.]*youtube.com\/watch\?v=([a-zA-Z0-9\-_]+)([a-zA-Z0-9\/\*\-\_\?\&\;\%\=\.]*)/i","<iframe width=\"728\" height=\"410\" src=\"//www.youtube.com/embed/$1\" frameborder=\"0\" allowfullscreen></iframe>",$row["post_contents"])) ."</div>";
 		echo "</div>\n";
 		
 		// If there are any comments, recursively load them.
-		if (mysqli_num_rows($comments) > 0) {	
-			while($comment = mysqli_fetch_assoc($comments)) {
+	if (mysqli_num_rows($comments) > 0) {	
+		while($comment = mysqli_fetch_assoc($comments)) {
 				
 				$contribute = mysqli_query($db,"SELECT username FROM db_identification WHERE UserID = $comment[UserID]");
 				$contribute = mysqli_fetch_array($contribute);
 				$contributehash = hash("sha256",$contribute["username"]);
 						
-		echo "<div class='post-comment'>
-		<a href='https://www.codefreak.co.uk/profiles/?username=".$contribute["username"]."'><img class='user-comment-avatar' style='width:45px;height:45px;' src='https://static.codefreak.co.uk/userdata/".$contributehash."/".$contributehash."_gravatarLarge.jpg' alt''/></a> 
-		<div class='comment-contents'><a href='https://www.codefreak.co.uk/profiles/?username=".$contribute["username"]."'><b>".$contribute["username"]."</b></a> ".$comment['comment_contents']."<br> <span class='comment-time'>" .$comment['comment_created']."</span></div></div>";
+		 echo "<div class='post-comment'>
+		 <a href='https://www.codefreak.co.uk/profiles/?username=".$contribute["username"]."'><img class='user-comment-avatar' style='width:45px;height:45px;' src='https://static.codefreak.co.uk/userdata/".$contributehash."/".$contributehash."_gravatarLarge.jpg' alt''/></a> 
+		 <div class='comment-contents'><a href='https://www.codefreak.co.uk/profiles/?username=".$contribute["username"]."'><b>".$contribute["username"]."</b></a> "
+		
+		 // Replacing strings with various kinds of links.
+		 .preg_replace_callback('#(?:https?://\S+)|(?:www.\S+)|(?:\S+\.\S+)#', function($arr)
+		 {
+
+   		 $url = parse_url($arr[0]);
+
+   		 // images
+  		 if(preg_match('#\.(png|jpg|gif)$#', $url['path']))
+  		  {
+     		   return '<br><img style="max-width:100%;max-height:672px;" src="'. $arr[0] . '" />';
+   		 }
+   		 //links
+    		return sprintf('<a href="%1$s">%1$s</a>', $arr[0]); },$comment['comment_contents']);
+	
+		echo " <br> <span class='comment-time'>" .$comment['comment_created']."</span></div></div>";
 		}};
 		
+		if($ismem == 1) {
 		echo "<div class='post-comments'>\n
 		<form method='post'>\n
 		<input type='hidden' name='PostID' value='".$row['PostID']."'/>\n
 		<input class='comment-input' type='text' name='comment-contents' placeholder='Leave a comment...' autocomplete='off'/>\n
 		</form>\n
 		</div>\n";
+		}
     }
 } else {
     echo "<div class='container'> No posts! :( </div>";
@@ -94,8 +113,6 @@ if (mysqli_num_rows($result) > 0) {
 <hr class="container">
 
 <?php 
-$ismem = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID"));
-
 if($ismem == 1) { ?>
 
 <div id="post-create" class="container">
