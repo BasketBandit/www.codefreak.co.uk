@@ -5,7 +5,7 @@
  	header("Location: dashboard");
  }
 	
- include_once 'db_connect.php';
+ require_once '/var/www/static.codefreak.co.uk/structure/session/db_connect.php';
 
  $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
 
@@ -20,7 +20,7 @@
  $upass = strip_tags($upass);
  
  // password encrypt using SHA256();
- $password = hash('sha256', $upass);
+ $password = password_hash($upass, PASSWORD_DEFAULT);
  
  // check email exist or not
  $result = mysqli_query($db,"SELECT account_email FROM db_identification WHERE account_email='$email'");
@@ -52,7 +52,7 @@
 <head>
 <meta charset=utf-8" />
 <title>www.codefreak.co.uk | Register</title>
-<?php include 'meta.ssi'; ?>
+<?php include '/var/www/static.codefreak.co.uk/structure/includes/meta.ssi'; ?>
 </head>
 <body>
 

@@ -58,3 +58,4 @@ static.codefreak.co.uk/structure/session/db_credentials.php
 *.key
 static.codefreak.co.uk/security/www.codefreak.co.uk.crt
 static.codefreak.co.uk/security/www.codefreak.co.uk.key
+www.codefreak.co.uk/test.php

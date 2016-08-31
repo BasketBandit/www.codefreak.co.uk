@@ -1,4 +1,4 @@
 <div id="head" class="container"><!----><div id="title"><a href="../../">CODEFREAK</a></div><!----></div>
 <?php if( isset($_SESSION['user']) ) { ?>
-<div id="logged"><a href="https://www.codefreak.co.uk/dashboard/"><img class="radius" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$userData['username']) ?>/<?php echo hash('sha256',$userData['username']) ?>_gravatarSmall.jpg" alt=""></a> &nbsp; <a href="https://www.codefreak.co.uk/logout?logout"><div id="logout" class="btn danger">Logout</div></a></div>
+<div id="logged"><a href="https://www.codefreak.co.uk/dashboard/"><img class="radius" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$userData['username']) ?>/<?php echo hash('sha256',$userData['username']) ?>_gravatarSmall.jpg" alt=""></a> &nbsp; <a href="https://www.codefreak.co.uk/logout.php?logout"><div id="logout" class="btn danger">Logout</div></a></div>
 <?php } else { echo "<div id='logged'><a href='https://www.codefreak.co.uk'><div id='logout' class='btn success'>Login</div></a></div>"; }; ?>

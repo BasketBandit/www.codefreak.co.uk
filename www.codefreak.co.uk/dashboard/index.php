@@ -1,4 +1,7 @@
 <?php
+//error_reporting(E_ALL);
+//ini_set('display_errors', true);
+
  require_once '/var/www/static.codefreak.co.uk/structure/session/session_init.php'; 
  require_once '/var/www/static.codefreak.co.uk/structure/session/db_connect.php';
  require_once '/var/www/static.codefreak.co.uk/structure/session/session_check.php'; 
@@ -40,7 +43,7 @@ body {
 <a href="https://www.codefreak.co.uk/profiles/"><div id="profile-search" class="btn success">Profiles</div></a>
 <a href="https://www.codefreak.co.uk/groups/"><div id="profile-groups" class="btn success">Groups</div></a>
 <a href="update.php"><div id="profile-update" class="btn warning">Update</div></a>
-<a href="settings"><div id="profile-edit" class="btn danger">Edit Profile</div></a>
+<a href="settings.php"><div id="profile-edit" class="btn danger">Edit Profile</div></a>
 </div>
 <!-- NAVIGATION BUTTONS END -->
 
@@ -54,12 +57,12 @@ if (file_exists($file0)) {
 }
 ?>
 
-<br>
+<br> 
 
 <!-- USER INFORMATION -->
 <div id="profile" class="<?php echo $userData['account_rank']; ?> container radius">
 <div id="profile-username" class="title <?php if ($userData['displayUsername'] == 0) { echo "hidden"; } ?>"><?php echo $userData['username']; ?></div>
-<div id="profile-image" class="<?php if ($userData['displayAvatar'] == 0) { echo "hidden"; } ?>"><img class="profile-image radius" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$userData['username']) ?>/<?php echo hash('sha256',$userData['username']) ?>_gravatarLarge.jpg" alt=""></div>
+<div id="profile-image" class="<?php if ($userData['displayAvatar'] == 0) { echo "hidden"; } ?>"><img style="width:130px;height:130px" class="profile-image radius" src="https://static.codefreak.co.uk/userdata/<?php echo hash('sha256',$userData['username']) ?>/<?php echo hash('sha256',$userData['username']) ?>_gravatarLarge.jpg" alt=""></div>
 </div>
 <!-- USER INFORMATION END -->
 
@@ -78,5 +81,5 @@ if (file_exists($file0)) {
 <script type="text/javascript" src="https://static.codefreak.co.uk/assets/js/scripts.js"></script>
 
 
-</body>
+</body> 
 </html>

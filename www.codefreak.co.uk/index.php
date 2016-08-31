@@ -16,14 +16,13 @@
   $username = strip_tags(trim($username));
   $password = strip_tags(trim($password));
   
-  $password = hash('sha256', $password); // Password hashing using SHA256
+  //$password = hash('sha256', $password); // Password hashing using SHA256
   
   $res = mysqli_query($db,"SELECT UserID, username, account_password FROM db_identification WHERE username='$username'");
   $row = mysqli_fetch_array($res); // Fetches database array with usernames and passwords.
   $count = mysqli_num_rows($res); // Must be a single row returned. (Obviously)
   $updateip = mysqli_query($db,"UPDATE db_identification SET ipv4_loginlast='$ip' WHERE username='$username'");
-  
-  if( $count == 1 && $row['account_password']==$password ) {
+  if( $count == 1 && password_verify($password, $row['account_password'])) {
    $_SESSION['user'] = $row['username'];
    $updateip;
    header("Location: dashboard");

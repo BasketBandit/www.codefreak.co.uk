@@ -1,4 +1,7 @@
-<?php
+<?php	
+error_reporting(E_ALL);
+ini_set('display_errors', true);
+ 
  ob_start();
  session_start();
  require_once '/var/www/static.codefreak.co.uk/structure/session/session_check.php';
@@ -10,7 +13,7 @@
 
 if (!unlink($unlink))
   {
-  echo ("Update error, please contact developer.");
+  echo ("Update error, please contact developer. (Unlink)");
   }
 else
   {

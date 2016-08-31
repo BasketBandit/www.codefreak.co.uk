@@ -19,12 +19,12 @@ if ($size <= 0) {
 	
 	// WRITE FILE
 	
-	$write0 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamSummary.json", "w") or die("Update failed, please contact developer!");
-	$write1 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamBadges.json", "w") or die("Update failed, please contact developer!");
-	$write2 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamBans.json", "w") or die("Update failed, please contact developer!");
-	$write3 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamGamesOwned.json", "w") or die("Update failed, please contact developer!");
+	$write0 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamSummary.json", "w") or die("Update failed, please contact developer! 1");
+	$write1 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamBadges.json", "w") or die("Update failed, please contact developer! 2");
+	$write2 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamBans.json", "w") or die("Update failed, please contact developer! 3");
+	$write3 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_steamGamesOwned.json", "w") or die("Update failed, please contact developer! 4");
 	
-	$write4 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_twitch.json", "w") or die("Update failed, please contact developer!");
+	$write4 = fopen("/var/www/static.codefreak.co.uk/userdata/" .$searchUser ."/" .$searchUser ."_twitch.json", "w") or die("Update failed, please contact developer! 5");
 
 	// CURL_INIT
 	
