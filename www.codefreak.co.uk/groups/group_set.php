@@ -1,3 +1,22 @@
+<?php
+if($_GET['action'] = "leave") { // If the url has ?action=leave, attempt to leave the group.
+////
+	 if($_GET['user'] == $userID) { 
+	 	$GroupID = $_GET['id'];
+	 	$val = mysqli_query($db,"SELECT UserID, GroupID FROM db_groups_membership WHERE GroupID = $GroupID");
+	 	$val = mysqli_fetch_array($val);
+		$errJoin = "";
+		// 
+	 	if($query = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID")) == 1) {
+			mysqli_query($db,"DELETE FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID");
+		    $errJoin = "<div class='btn btn-block success'>Group left.</div>";
+	 	};
+		//
+     };
+}; 
+//// 
+?>
+
 <!doctype html>
 <html>
 
@@ -17,16 +36,20 @@
 <a href="https://www.codefreak.co.uk/profiles/"><div id="profile-search" class="btn success">Profiles</div></a>
 <a href="https://www.codefreak.co.uk/groups/"><div id="profile-groups" class="btn success">Groups</div></a>
 <a href="https://www.codefreak.co.uk/groups/?id=<?php echo $groupset ?>&page=members"><div id="profile-members" class="btn warning">Members</div></a>
-<?php 
-$isadmin = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID AND group_rank = 'admin'" ));
-if($isadmin == 1) {
-?>
+
+
+
+<?php // Checks if is admin of group and adds edit button where appropriate.
+$isadmin = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID AND group_rank = 'admin'"));
+if($isadmin == 1) { ?>
 <a href="https://www.codefreak.co.uk/groups/?id=<?php echo $groupset ?>&page=settings"><div id="profile-settings" class="btn danger">Edit Group</div></a>
 <?php } ?>
 </div>
 
 <br>
 <!-- DASHBOARD BUTTONS END -->
+
+<?php if(isset($errJoin)) { echo "<div class='container'>". $errJoin ."<div><br>"; } ?>
 
 <?php switch ($_GET['page']) { // PHP Switch to choose between the group pages, I figured it was easier this way than to actually try and make a conventional navigation.
 	case "": // Case "" is the default page where no $_GET param have been passed other than the ID param to load the page.
@@ -36,10 +59,35 @@ if($isadmin == 1) {
 $ismem = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID"));
 $GroupData = mysqli_query($db,"SELECT * FROM db_groups WHERE GroupID = $GroupID");
 $GroupData = mysqli_fetch_array($GroupData);
-echo "<div id='group-banner' class='container radius'>";
-echo "<div id='group-name' class='group-name'>".$GroupData['group_name']."</div>";
-echo "</div>";
 ?>
+
+<div id='group-banner' class='container radius'>
+
+<?php 
+$ismember = mysqli_num_rows(mysqli_query($db,"SELECT * FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID"));
+if($ismember == 1) { ?>
+<div id="group-leave"><form method="get"><button type="submit" class="btn danger" name="id" value="<?php echo $GroupID ?>">Leave Group</button><input type="hidden" name="user" value="<?php echo $userID ?>"><input type="hidden" name="action" value="leave"></form></div>
+<?php } ?>
+
+<div id='group-name' class='group-name'><?php echo $GroupData['group_name'] ?></div>
+
+</div>
+
+<br>
+
+<?php  
+if($ismem == 1) { ?>
+
+<div class="container">
+<div id="post-create">
+<form method="post">
+<textarea id="post-input" type="text" name="post-contents" placeholder="Write something..."></textarea>
+<button type="submit" class="btn btn-xxblock success" name="post-submit">Post</button>
+</form>
+</div>
+</div>
+
+<?php  } else { echo "<div class='container btn-x info'>You need to be a member of this group to post!</div>"; }?>
 
 <br>
 
@@ -110,24 +158,18 @@ if (mysqli_num_rows($result) > 0) {
 ?>
 </div>
 
-<hr class="container">
+<?php
+break;
 
-<?php 
-if($ismem == 1) { ?>
+case "members": // Case members; Its clearly easier and more efficient to store the settings and members pages in their own files instead of trying to put all the code on this page just for 2/3 of it to be ignored.
+require_once 'members.php';
+break;
 
-<div id="post-create" class="container">
-<form method="post">
-<textarea id="post-input" type="text" name="post-contents" placeholder="Write something..."></textarea>
-<button type="submit" class="btn btn-xxblock success" name="post-submit">Post</button>
-</form>
-</div>
-
-<?php  } else { echo "<div class='container btn-x info'>You need to be a member of this group to post!</div>"; }?>
-
-<?php if($errMSG != "") { echo $errMSG; }; ?>
-
-<br>
-
+case "settings": // Case settings; Same deal as above, but this case will call the settings page.
+require_once 'settings.php';
+break;
+};
+?>
 
 <style>
 #group-banner {
@@ -137,14 +179,9 @@ if($ismem == 1) { ?>
 }
 </style>
 
-<?php
-break;
+<?php if($errMSG != "") { echo $errMSG; }; ?>
 
-case "settings": // Case settings; Its clearly easier and more efficient to store the settings and members pages in their own files instead of trying to put all the code on this page just for 2/3 of it to be ignored.
-require_once 'settings.php';
-break;
-};
-?>
+<br>
 
 </body>
 </html>

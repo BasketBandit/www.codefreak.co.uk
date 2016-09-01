@@ -24,11 +24,10 @@ if(isset($_POST['save'])) {
   
   if ($res) {
    $errTyp = "success";
-   $errMSG = "Update successful! Refreshing in 2 seconds...";
-   header("refresh:2;");
+   $errMSGS = "Update successful!";
   } else {
    $errTyp = "danger";
-   $errMSG = "Something went wrong, refreshing in 2 seconds...";
+   $errMSGS = "Something went wrong, refreshing in 2 seconds...";
    header("refresh:2;");
   } 
  
@@ -76,8 +75,8 @@ $GroupData = mysqli_fetch_array($GroupData);
 
 <br>
 
-   <?php if ( isset($errMSG) ) { ?>
-    <div class="form-group"><div class="alert alert-<?php echo ($errTyp=="success") ? "success" : $errTyp; ?>"><span class="glyphicon glyphicon-info-sign"></span> <?php echo $errMSG; ?></div></div>
+   <?php if ( isset($errMSGS) ) { ?>
+    <div class="form-group"><div class="alert alert-<?php echo ($errTyp=="success") ? "success" : $errTyp; ?>"><span class="glyphicon"></span> <?php echo $errMSGS; ?></div></div>
    <?php } ?>
    
 </div>

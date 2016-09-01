@@ -7,13 +7,13 @@ if($_GET['action'] = "join") { // If the url has ?action=join, attempt to join t
      ///
 	 if($_GET['user'] == $userID) { 
 	 	$GroupID = $_GET['join'];
-	 	$val = mysqli_query($db,"SELECT UserID, GroupID FROM db_groups_membership WHERE GroupID =".$GroupID);
+	 	$val = mysqli_query($db,"SELECT UserID, GroupID FROM db_groups_membership WHERE GroupID = $GroupID");
 	 	$val = mysqli_fetch_array($val);
 		$errJoin = "";
 		// 
-	 	if($query = mysqli_num_rows(mysqli_query($db,"SELECT UserID, GroupID FROM db_groups_membership WHERE GroupID = ".$GroupID." AND UserID = ".$userID)) == 0) {
-			mysqli_query($db,"INSERT INTO db_groups_membership (UserID, GroupID, group_rank) VALUES('$userID','$groupID', 'member')");
-			header("refresh:5;url=https://www.codefreak.co.uk/groups/"); 
+	 	if($query = mysqli_num_rows(mysqli_query($db,"SELECT UserID, GroupID FROM db_groups_membership WHERE GroupID = $GroupID AND UserID = $userID")) == 0) {
+			mysqli_query($db,"INSERT INTO db_groups_membership (UserID, GroupID, group_rank) VALUES('$userID','$GroupID', 'member')");
+			header("refresh:0.5;url=https://www.codefreak.co.uk/groups/"); 
 			$errJoin = "";
 	 	} else {
 	    	$errJoin = "<div class='btn btn-block danger'>You are already in this group!</div>";
