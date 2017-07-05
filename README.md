@@ -1,10 +1,9 @@
-# PROJECTFREAK
+# www.codefreak.co.uk
 This project is all in all just an exercise for me to learn and develop something I haven't done before; although in the event that the website actually took off, I would be willing to try and maintain it since that is an experience all on its own.
 
 Below I will list what I believe has been finished as of the latest commit, with things that are half implement or going to be implement soon<sup>TM</sup> being excluded.
 
-
-Please feel free to visit www.codefreak.co.uk, create an account, use the website and report and issues that you come across!
+This project hasn't been dropped and I will likely come back to it at a later date; I am however working on other things all the time and where appropriate and if I actually remember, will upload them to github.
 
 ## What has been finished so far:
 
